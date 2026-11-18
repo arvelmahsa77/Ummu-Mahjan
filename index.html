@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ummu Mahjan Indonesia</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cinzel & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .font-sans-custom { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* Background Gradient sesuai desain Figma */
+    .bg-fuchsia-gold-gradient {
+      background: linear-gradient(90deg, #6b115a 0%, #8c1d5c 35%, #ca9047 75%, #f5e678 100%);
+    }
+
+    /* Transition Smooth Halaman */
+    .page-section {
+      transition: opacity 0.3s ease-in-out;
+    }
+    .hidden-section {
+      display: none;
+      opacity: 0;
+    }
+    .active-section {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans-custom min-h-screen text-gray-800">
+
+  <!-- HEADER BENNER DENGAN GRADIENT FIGMA -->
+  <header class="bg-fuchsia-gold-gradient pt-8 pb-16 px-4 md:px-12 text-white relative shadow-lg">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Logo Lingkaran Kiri Header -->
+      <div class="flex items-center gap-4 cursor-pointer" onclick="switchPage('beranda')">
+        <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white p-1 shadow-md flex items-center justify-center border-2 border-amber-300">
+          <svg class="w-14 h-14 text-indigo-900" viewBox="0 0 100 100" fill="currentColor">
+            <circle cx="50" cy="50" r="45" fill="#1e1b4b"/>
+            <path d="M50 15 L53 25 L63 25 L55 31 L58 41 L50 35 L42 41 L45 31 L37 25 L47 25 Z" fill="#f59e0b"/>
+            <path d="M30 75 Q 50 45 70 75 Z" fill="#ffffff"/>
+            <rect x="46" y="40" width="8" height="35" fill="#f59e0b"/>
+            <circle cx="50" cy="35" r="5" fill="#f59e0b"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Teks Judul & Deskripsi Header -->
+      <div class="text-center flex-1 px-4">
+        <h1 class="font-cinzel text-2xl md:text-4xl lg:text-5xl font-bold tracking-wider text-white drop-shadow-md">
+          UMMU MAHJAN INDONESIA
+        </h1>
+        <p class="font-playfair italic text-xs md:text-sm lg:text-base text-amber-100 opacity-90 max-w-2xl mx-auto mt-2 leading-relaxed">
+          Ummu Mahjan Indonesia adalah sebuah komunitas atau yayasan relawan sosial yang fokus pada layanan bersih-bersih masjid dan mushola secara gratis.
+        </p>
+      </div>
+      
+      <div class="w-20 hidden md:block"></div>
+    </div>
+  </header>
+
+  <!-- NAVBAR FLOATING PILL (NAVIGASI UTAMA) -->
+  <div class="max-w-4xl mx-auto px-4 relative -mt-7 z-20">
+    <nav class="bg-white rounded-full shadow-lg border border-gray-100 py-2 px-4 md:px-8 flex items-center justify-between">
+      
+      <!-- Logo Singkat/Teks UMI -->
+      <button onclick="switchPage('beranda')" class="font-cinzel font-black text-2xl md:text-3xl text-red-700 hover:text-red-800 transition tracking-tight">
+        UMI
+      </button>
+
+      <!-- Menu Links -->
+      <div class="flex items-center space-x-3 md:space-x-8 text-xs md:text-sm font-semibold font-playfair text-gray-700">
+        <button id="nav-beranda" onclick="switchPage('beranda')" class="hover:text-amber-600 transition py-1 border-b-2 border-amber-500 text-amber-600">
+          Beranda
+        </button>
+        <button id="nav-tentang" onclick="switchPage('tentang')" class="hover:text-amber-600 transition py-1 border-b-2 border-transparent">
+          Tentang Kami
+        </button>
+        <button id="nav-fokus" onclick="switchPage('beranda')" class="hover:text-amber-600 transition py-1 border-b-2 border-transparent">
+          Fokus Program
+        </button>
+        <button id="nav-narasi" onclick="switchPage('beranda')" class="hover:text-amber-600 transition py-1 border-b-2 border-transparent">
+          Narasi
+        </button>
+        <button id="nav-kemitraan" onclick="switchPage('beranda')" class="hover:text-amber-600 transition py-1 border-b-2 border-transparent">
+          Kemitraan
+        </button>
+      </div>
+
+      <!-- Search Input -->
+      <div class="relative hidden sm:block">
+        <input 
+          type="text" 
+          placeholder="Search" 
+          class="bg-gray-50 border border-gray-300 text-xs rounded-full py-1.5 pl-4 pr-8 focus:outline-none focus:ring-1 focus:ring-amber-500 w-28 md:w-36"
+        >
+        <svg class="w-4 h-4 text-gray-400 absolute right-2.5 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </div>
+    </nav>
+  </div>
+
+  <!-- CONTAINER KONTEN DENGAN KARTU PUTIH FIGMA -->
+  <main class="max-w-4xl mx-auto px-4 mt-6 pb-20">
+    <div class="bg-white rounded-lg shadow-md p-6 md:p-10 border border-gray-100 min-h-[500px]">
+
+      <!-- ================= HALAMAN 1: BERANDA ================= -->
+      <section id="page-beranda" class="page-section active-section">
+        <div class="text-center py-12">
+          <h2 class="font-cinzel text-2xl md:text-3xl font-bold text-gray-800 mb-4">Selamat Datang di Ummu Mahjan Indonesia</h2>
+          <p class="font-playfair text-gray-600 max-w-xl mx-auto leading-relaxed mb-8">
+            Komunitas relawan sosial yang berdedikasi menjaga kebersihan, kenyamanan, dan kekhusyukan tempat ibadah umat Islam.
+          </p>
+          <button onclick="switchPage('tentang')" class="bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-6 py-2.5 rounded-full transition shadow-sm">
+            Pelajari Tentang Kami &rarr;
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= HALAMAN 2: TENTANG KAMI ================= -->
+      <section id="page-tentang" class="page-section hidden-section">
+        <div class="space-y-12">
+
+          <!-- Section 1: Teks Paragraf 1 & Logo Besar -->
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex-1">
+              <p class="font-playfair text-xs md:text-sm text-gray-700 leading-relaxed text-justify">
+                <strong>Ummu Mahjan Indonesia</strong> adalah sebuah yayasan sekaligus gerakan relawan sosial yang berfokus pada layanan bersih-bersih masjid dan mushola secara gratis. Berbasis di Kabupaten Purbalingga, Jawa Tengah, komunitas ini secara rutin berkeliling setiap akhir pekan untuk membersihkan berbagai fasilitas rumah ibadah, mulai dari menyedot debu karpet, mengepel ruang utama, hingga menyikat area tempat wudhu dan kamar mandi. Operasional dan perlengkapan kebersihan mereka didukung oleh donasi masyarakat serta kolaborasi dengan lembaga amil lokal seperti BAZNAS Kabupaten Purbalingga.
+              </p>
+            </div>
+            <!-- Logo Lingkaran Besar -->
+            <div class="w-44 h-44 md:w-52 md:h-52 flex-shrink-0 flex items-center justify-center">
+              <div class="w-full h-full rounded-full border-4 border-amber-400 p-2 shadow-lg flex items-center justify-center bg-white">
+                <div class="text-center">
+                  <div class="font-bold text-xs tracking-widest text-indigo-900 uppercase font-cinzel">UMMU MAHJAN</div>
+                  <div class="w-16 h-16 mx-auto my-1 bg-indigo-900 rounded-full flex items-center justify-center text-amber-400">
+                    <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="font-bold text-xs tracking-widest text-red-600 uppercase font-cinzel">INDONESIA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Foto Dokumen 1 & Teks Paragraf 2 -->
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <!-- Galeri Foto / Dokumentasi -->
+            <div class="w-full md:w-1/2 grid grid-cols-2 gap-3 flex-shrink-0">
+              <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=400&q=80" alt="Dokumentasi Relawan 1" class="w-full h-36 object-cover rounded-md shadow-sm border border-gray-200">
+              <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=400&q=80" alt="Dokumentasi Relawan 2" class="w-full h-36 object-cover rounded-md shadow-sm border border-gray-200">
+            </div>
+            <div class="w-full md:w-1/2">
+              <p class="font-playfair text-xs md:text-sm text-gray-700 leading-relaxed text-justify">
+                Nama gerakan ini terinspirasi dari kisah keteladanan <strong>Ummu Mahjan</strong>, seorang wanita sahabat di zaman Nabi Muhammad SAW yang dikenal sangat rajin menjaga kebersihan masjid. Semangat nilai yang dihidupkan kembali oleh para relawan Ummu Mahjan Indonesia guna menciptakan suasana ibadah yang lebih bersih, nyaman, dan khusyuk bagi para jamaah.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 3: Foto Dokumen 2 & Teks Paragraf 3 -->
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <!-- Galeri Foto Kebersihan Karpet -->
+            <div class="w-full md:w-1/2 grid grid-cols-2 gap-3 flex-shrink-0">
+              <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=400&q=80" alt="Pembersihan Masjid 1" class="w-full h-36 object-cover rounded-md shadow-sm border border-gray-200">
+              <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80" alt="Pembersihan Masjid 2" class="w-full h-36 object-cover rounded-md shadow-sm border border-gray-200">
+            </div>
+            <div class="w-full md:w-1/2">
+              <p class="font-playfair text-xs md:text-sm text-gray-700 leading-relaxed text-justify">
+                Melalui aksi nyata setiap pekan, Ummu Mahjan Indonesia berkomitmen untuk terus memperluas jangkauan layanan kebersihan masjid di berbagai daerah, mengajak masyarakat untuk peduli pada kesucian tempat ibadah, serta memfasilitasi setiap relawan untuk meraih keberkahan lewat khidmat kepada rumah Allah SWT.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- JAVASCRIPT NAVIGASI INTERAKTIF -->
+  <script>
+    function switchPage(pageId) {
+      // Sembunyikan semua section
+      document.getElementById('page-beranda').classList.add('hidden-section');
+      document.getElementById('page-beranda').classList.remove('active-section');
+      document.getElementById('page-tentang').classList.add('hidden-section');
+      document.getElementById('page-tentang').classList.remove('active-section');
+
+      // Tampilkan section yang dipilih
+      const targetPage = document.getElementById('page-' + pageId);
+      if (targetPage) {
+        targetPage.classList.remove('hidden-section');
+        targetPage.classList.add('active-section');
+      }
+
+      // Reset border underline navigasi
+      const navItems = ['beranda', 'tentang', 'fokus', 'narasi', 'kemitraan'];
+      navItems.forEach(item => {
+        const el = document.getElementById('nav-' + item);
+        if (el) {
+          el.classList.remove('border-amber-500', 'text-amber-600');
+          el.classList.add('border-transparent');
+        }
+      });
+
+      // Highlight menu aktif
+      const activeNav = document.getElementById('nav-' + pageId);
+      if (activeNav) {
+        activeNav.classList.remove('border-transparent');
+        activeNav.classList.add('border-amber-500', 'text-amber-600');
+      }
+
+      // Scroll halus ke atas
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
